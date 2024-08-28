@@ -94,23 +94,21 @@ defmodule Metaex.Instagram do
       )
       |> to_string()
 
-  def feed_url(
-        %{access_token: access_token, instagram_page_id: instagram_page_id} = params
-      ),
-      do:
-        access_token_endpoint()
-        |> URI.merge("/#{api_version()}/#{instagram_page_id}/media")
-        |> Map.put(
-          :query,
-          URI.encode_query(%{
-            access_token: access_token,
-            fields:
-              "is_comment_enabled,ig_id,permalink,shortcode,timestamp,thumbnail_url,username,caption,like_count",
-            after: Map.get(params, :after),
-            before: Map.get(params, :before)
-          })
-        )
-        |> to_string()
+  def feed_url(%{access_token: access_token, instagram_page_id: instagram_page_id} = params),
+    do:
+      access_token_endpoint()
+      |> URI.merge("/#{api_version()}/#{instagram_page_id}/media")
+      |> Map.put(
+        :query,
+        URI.encode_query(%{
+          access_token: access_token,
+          fields:
+            "is_comment_enabled,ig_id,permalink,shortcode,timestamp,thumbnail_url,username,caption,like_count",
+          after: Map.get(params, :after),
+          before: Map.get(params, :before)
+        })
+      )
+      |> to_string()
 
   def media_object_url(access_token, instagram_media_id),
     do:

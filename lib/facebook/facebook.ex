@@ -109,7 +109,7 @@ defmodule Metaex.Facebook do
         )
         |> to_string
 
-  def pages(%{access_token: access_token}) do
+  def pages( access_token) do
     with {:ok, %Req.Response{body: body}} <-
            Req.get(pages_url(access_token)) do
       {:ok, body}
@@ -126,7 +126,7 @@ defmodule Metaex.Facebook do
     end
   end
 
-  def current_profile(%{access_token: access_token}) do
+  def current_profile( access_token) do
     with {:ok, %Req.Response{body: response}} <-
            Req.get(current_profile_url(access_token)),
          %{"id" => _id} = _ <- response do
