@@ -1,3 +1,2 @@
-defmodule Metaex.Whatsapp.Service do
-
+defmodule Metaex.Whatsapp do
 end

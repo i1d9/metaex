@@ -24,3 +24,5 @@ metaex-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+/config/*.local.exs
